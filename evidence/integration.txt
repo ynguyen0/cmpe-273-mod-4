@@ -1,152 +1,152 @@
-Independent processes: Order PID 90851, Inventory PID 90850
+Independent processes: Order PID 98366, Inventory PID 98365
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 2}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 2}' http://127.0.0.1:57511/orders
 HTTP/1.0 201 Created
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 157
 
-{"order_id": "494ae298-8050-4e85-b157-ce5452dde249", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:04:42.415157+00:00"}
+{"order_id": "5f1d16ea-d0f2-4723-9555-4f81fcbe9363", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:11:39.609622+00:00"}
 
-$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57281/orders/494ae298-8050-4e85-b157-ce5452dde249
+$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57511/orders/5f1d16ea-d0f2-4723-9555-4f81fcbe9363
 HTTP/1.0 200 OK
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 157
 
-{"order_id": "494ae298-8050-4e85-b157-ce5452dde249", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:04:42.415157+00:00"}
+{"order_id": "5f1d16ea-d0f2-4723-9555-4f81fcbe9363", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:11:39.609622+00:00"}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "pen", "quantity": 1}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "pen", "quantity": 1}' http://127.0.0.1:57511/orders
 HTTP/1.0 409 Conflict
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 62
 
 {"error": "item_unavailable", "item_id": "pen", "quantity": 1}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "unknown", "quantity": 1}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "unknown", "quantity": 1}' http://127.0.0.1:57511/orders
 HTTP/1.0 409 Conflict
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 66
 
 {"error": "item_unavailable", "item_id": "unknown", "quantity": 1}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 6}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 6}' http://127.0.0.1:57511/orders
 HTTP/1.0 409 Conflict
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 63
 
 {"error": "item_unavailable", "item_id": "book", "quantity": 6}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 0}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 0}' http://127.0.0.1:57511/orders
 HTTP/1.0 400 Bad Request
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 78
 
 {"error": "invalid_request", "message": "quantity must be a positive integer"}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": -1}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": -1}' http://127.0.0.1:57511/orders
 HTTP/1.0 400 Bad Request
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 78
 
 {"error": "invalid_request", "message": "quantity must be a positive integer"}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": true}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": true}' http://127.0.0.1:57511/orders
 HTTP/1.0 400 Bad Request
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 78
 
 {"error": "invalid_request", "message": "quantity must be a positive integer"}
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": "2"}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": "2"}' http://127.0.0.1:57511/orders
 HTTP/1.0 400 Bad Request
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 78
 
 {"error": "invalid_request", "message": "quantity must be a positive integer"}
 
-$ kill -TERM 90850  # Stop only Inventory
+$ kill -TERM 98365  # Stop only Inventory
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 1}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "book", "quantity": 1}' http://127.0.0.1:57511/orders
 HTTP/1.0 503 Service Unavailable
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 111
 
 {"error": "inventory_unavailable", "message": "Cannot check inventory. Try again later; no order was created."}
 
-$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57281/health
+$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57511/health
 HTTP/1.0 200 OK
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 36
 
 {"status": "ok", "service": "order"}
 
-$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57281/orders/494ae298-8050-4e85-b157-ce5452dde249
+$ curl --silent --show-error --max-time 5 -i http://127.0.0.1:57511/orders/5f1d16ea-d0f2-4723-9555-4f81fcbe9363
 HTTP/1.0 200 OK
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 157
 
-{"order_id": "494ae298-8050-4e85-b157-ce5452dde249", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:04:42.415157+00:00"}
+{"order_id": "5f1d16ea-d0f2-4723-9555-4f81fcbe9363", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:11:39.609622+00:00"}
 
 Restart Inventory; Order keeps the same PID.
 
-$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "notebook", "quantity": 1}' http://127.0.0.1:57281/orders
+$ curl --silent --show-error --max-time 5 -i -H 'Content-Type: application/json' -d '{"item_id": "notebook", "quantity": 1}' http://127.0.0.1:57511/orders
 HTTP/1.0 201 Created
 Server: BaseHTTP/0.6 Python/3.14.7
-Date: Tue, 20 Oct 2026 05:04:42 GMT
+Date: Tue, 20 Oct 2026 05:11:39 GMT
 Content-Type: application/json
 Content-Length: 161
 
-{"order_id": "80c48f1b-e368-46d5-b3d5-9e3593c647ae", "item_id": "notebook", "quantity": 1, "status": "created", "created_at": "2026-10-20T05:04:42.546865+00:00"}
+{"order_id": "04ae6ddf-eb70-4c39-abbf-7d2923994c81", "item_id": "notebook", "quantity": 1, "status": "created", "created_at": "2026-10-20T05:11:39.777361+00:00"}
 
 PASS: creation, tracking, unavailable stock, validation, dependency failure, liveness, and recovery.
 
 Service logs:
-Inventory listening on http://127.0.0.1:57280
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /health HTTP/1.1" 200 -
-Order listening on http://127.0.0.1:57281
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /availability?item_id=book&quantity=2 HTTP/1.1" 200 -
-{"event": "OrderCreated", "order": {"order_id": "494ae298-8050-4e85-b157-ce5452dde249", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:04:42.415157+00:00"}}
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 201 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /orders/494ae298-8050-4e85-b157-ce5452dde249 HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /availability?item_id=pen&quantity=1 HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 409 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /availability?item_id=unknown&quantity=1 HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 409 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /availability?item_id=book&quantity=6 HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 409 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 400 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 400 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 400 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 400 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 503 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /orders/494ae298-8050-4e85-b157-ce5452dde249 HTTP/1.1" 200 -
-Inventory listening on http://127.0.0.1:57280
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /health HTTP/1.1" 200 -
-127.0.0.1 - - [19/Oct/2026 22:04:42] "GET /availability?item_id=notebook&quantity=1 HTTP/1.1" 200 -
-{"event": "OrderCreated", "order": {"order_id": "80c48f1b-e368-46d5-b3d5-9e3593c647ae", "item_id": "notebook", "quantity": 1, "status": "created", "created_at": "2026-10-20T05:04:42.546865+00:00"}}
-127.0.0.1 - - [19/Oct/2026 22:04:42] "POST /orders HTTP/1.1" 201 -
+Inventory listening on http://127.0.0.1:57510
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /health HTTP/1.1" 200 -
+Order listening on http://127.0.0.1:57511
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /availability?item_id=book&quantity=2 HTTP/1.1" 200 -
+{"event": "OrderCreated", "order": {"order_id": "5f1d16ea-d0f2-4723-9555-4f81fcbe9363", "item_id": "book", "quantity": 2, "status": "created", "created_at": "2026-10-20T05:11:39.609622+00:00"}}
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 201 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /orders/5f1d16ea-d0f2-4723-9555-4f81fcbe9363 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /availability?item_id=pen&quantity=1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 409 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /availability?item_id=unknown&quantity=1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 409 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /availability?item_id=book&quantity=6 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 409 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 400 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 400 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 400 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 400 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 503 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /orders/5f1d16ea-d0f2-4723-9555-4f81fcbe9363 HTTP/1.1" 200 -
+Inventory listening on http://127.0.0.1:57510
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [19/Oct/2026 22:11:39] "GET /availability?item_id=notebook&quantity=1 HTTP/1.1" 200 -
+{"event": "OrderCreated", "order": {"order_id": "04ae6ddf-eb70-4c39-abbf-7d2923994c81", "item_id": "notebook", "quantity": 1, "status": "created", "created_at": "2026-10-20T05:11:39.777361+00:00"}}
+127.0.0.1 - - [19/Oct/2026 22:11:39] "POST /orders HTTP/1.1" 201 -
